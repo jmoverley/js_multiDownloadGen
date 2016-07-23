@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>multi download tool</title>
+		</head>
+	<body >
+		<label for="url">URL</label>
+		<input type='text' class="form-control" id="urls" size="50" placeholder="Enter Url" list='listid'>
+			<datalist id='listid'>
+				<option label='VF R&D GI 1GB' value='http://172.20.34.238/files/xiB/1GiB.bin'>
+				<option label='ThinkBB 1GB' value='http://download.thinkbroadband.com/1GB.zip'>
+				<option label='ThinkBB 10MB' value='http://download.thinkbroadband.com/10MB.zip'>
+			</datalist>
+	
+		<label for="url">#</label>
+		<select class="form-control" id="iterselect">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3" selected>3</option>
+			<option value="4">4</option>	
+			<option value="5">5</option>
+		</select>
+		<button type="clickable" id="download-btn" class="btn btn-default">Download</button>
+		
+		<script src="browser.js"></script>
+		<script>
+			document.querySelector('#download-btn').addEventListener('click', function (e) {
+					
+				if ( document.getElementById('urls').value ){
+					var urls = document.getElementById('urls').value.split(' ');
+					var iter = document.getElementById('iterselect').value;			
+					multiDownload(urls, iter);
+				} else {
+					alert("Require URL");
+				}
+			});
+		</script>
+	</body>
+</html>
